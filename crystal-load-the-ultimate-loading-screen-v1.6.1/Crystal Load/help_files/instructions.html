@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    <!-- Hello, your reading the source code for the help page -->
+	<!-- Created by CaptainMcMarcus for ScriptFodder -->
+    <!-- This is the HTML code below, there might not be any comments because this isn't really for editing -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<meta name="description" content="Helper" /> <!-- Webpage Description --> 
+	<title>Helper</title> <!-- Webpage Title -->
+	<link href="style.css" rel="stylesheet" type="text/css" /> <!-- Links to the Stylesheet -->
+	
+    <script type="text/javascript" src="scripts/jquery.js"></script><!-- Link to jquery so we can center the content -->
+    
+	</head>
+	
+	<body>
+    
+    <div class="wrapper"><!-- Opens the wrapper so we can contain and center everything -->
+    	
+        <nav>
+        	<ul>
+            	<li><a href="../help.html">HOME</a></li>
+                <li><a href="help.html">HELP</a></li>
+                <li style="margin-right: 0px;"><a href="legal.html">LEGAL</a></li>
+           	</ul>
+       	</nav>
+        
+        <div class="clear"></div>
+    	
+        <div class="box-wrap">
+           	<h2>INSTRUCTIONS</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            This loading screen can be a bit tought to get set-up but hopefully this page will help you. The instructions are split up into various sections
+            so as to make it easy for to find out what you want to do.
+            </p>
+
+      	</div>
+        
+        <div class="box-wrap">
+           	<h2>CONFIGURING THE LOADING SCREEN</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            The loading screen is coded using a server side language known as PHP. This means that the file has to be running off a server for it to work.
+            Before we can test it we firstly need to configure it.<br /><br />            
+            
+            1. GET A STEAM API KEY<br /><br />
+            We need to acquire a Steam API Key, to do this simply visit: 
+            <a href="http://steamcommunity.com/dev/apikey" target="_blank">http://steamcommunity.com/dev/apikey</a><br />
+	  		Just sign in with your steam account and generate an API Key.<br /><br />
+
+			2. ADD STEAM API KEY TO CODE<br /><br />
+			We now need to add the key to the main code. To do this simply open up index.php using your favourite code editor, I recommend using Notepad++ as it is
+            free and will nicely highlight the code so you can read it better.
+            Right at the top of the code you will see a piece of code that looks like this.            
+            </p>
+            
+            <pre>	$SteamAPIKey = "INSERT YOUR STEAM API KEY HERE";</pre>
+                      
+<p>
+Simply replace the words INSERT YOUR STEAM API KEY HERE, with your newly generated key. You also need to make sure that the key is inside of the quotation marks
+otherwise the script won't work. Below is an example of what it should look like with a key (please note that
+the key is invalid)</p>
+
+			<pre>	$SteamAPIKey = "0000000000";</pre>
+
+
+<p>3. UPLOAD CRYSTAL FOLDER TO YOUR WEB HOST<br /><br />
+	This loading screen uses PHP to dynamically insert a steam avatar, name and ID. To do this it has been coded in a server side language known as PHP and 
+    will only work properly when it is accessed from a web server.<br /><br />
+    
+    All you need to do is simply upload the contents of the folder called 'Crystal' onto your web host. The easiest way to do this is to use FTP to easily transfer
+    the files onto your web hosting account. (please note that web hosting is different from your game server host)<br /><br />
+    
+    If you don't have a web host then I recommend <a href="http://api.hostinger.co.uk/redir/5932518" target="_blank">Hostinger</a> as they are a free web host and offer all the
+    php features required for the loading screen to work, once you have done this you can then move onto the next step.<br /><br />
+    
+    <a href="http://www.000webhost.com/861956.html" target="_blank">000WebHost</a> is also another good free webhost but contains advert banners.
+    (Please note that if you use a different host they must support PHP or else the loading screen will not work).<br /><br />
+
+4. TEST LOADING SCREEN<br /><br />
+	We can now test the loading screen to see if it is able to pull the avatar and name of someone from steam.<br /><br />
+    
+    To test the loading screen simply type into the address bar the domain for where you uploaded crystal load onto your web server. You will get
+    an error message that appears which has two different links, select the test link. If my Steam Avater and Steam Name show up then the loading screen has been
+    correctly configured :D</p>
+    
+    <p>5. CREATE CORRECT SV_LOADINGURL FOR GARRY'S MOD SERVER<br />
+    If the test went through all ok then we can move onto the next part which is to configure our sv_loadingurl, this is the <strong>really important</strong> bit, 
+    as you need to do this otherwise it won't work in garry's mod. For this to work you need to add <strong>?steamid=%s</strong> to the end of the URL. Below is an example which
+    shows this.
+    
+    <pre>	sv_loadingurl "http://domainnameexample.com/index.php?steamid=%s"</pre>
+    
+    <p>%s tells garrys mod to give us the players steam community id and that's how we can display their avatar and name. Without this it simply won't work, if 
+    it's set up wrong you will get an error message.
+    
+    DO NOT SET YOUR LOADING URL VIA THE SERVER STARTUP COMMAND LINE, this will result in a black screen appearing, instead you should set your sv_loadingurl via the server
+    startup config file.</p>
+    </div>
+    
+    <div class="box-wrap">
+           	<h2>CONFIGURING SV_LOADINGURL</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            For this loading screen to work we need to get the users steam id. Garry's mod can give this to us by adding <strong>?steamid=%s</strong> to the end
+            of the url. Below is an example showing you what your sv_loadingurl should look like.<br /><br />
+            
+            Please note that if you set the loading url via the command line it results in just a black screen being shown, it must bet set within your autoexec.cfg file.
+            </p>
+            
+            <pre>	sv_loadingurl "http://domainnameexample.com/index.php?steamid=%s"</pre>
+
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>ADDING MUSIC</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            Adding music is now simpler than ever, on top of that the music is all randomly selected so you can add in as many tracks as you want. 
+            Steam uses and old version of the chrome engine that can only play .OGG files so here are some instructions on how to get music working.<br /><br />
+
+			Please note that the music script is now PHP Based so you will only hear the music playing if it's all uploaded onto your web host, you won't be 
+            able to hear any music if you open the local file on your PC.<br /><br />
+            
+            1. Convert Audio File to .OGG<br />
+            The steam browser which loads up our loading screen can only read .OGG files, this means we have to convert our audio file. To do this simply use an online
+            audio converter such as: <a href="http://audio.online-convert.com/convert-to-ogg" target="_blank">http://audio.online-convert.com/convert-to-ogg</a><br /><br />		
+            Drop the bitrate to 128kbps and don't worry about changing anything else. By using a lower bitrate the song will be a smaller filesize and will 
+            allow the page to load up faster.<br /><br />
+            
+            2. ADD TRACKS TO THE SONGS FOLDER<br />
+            Inside the crystal folder is the core structure for Crystal Load, there is also a folder in there called songs. All you need to do is add your .OGG files into 
+            this folder and then the rest is all automatic so if you have no songs in then nothing will play, if one song is in then that'll be the only thing to play and 
+            if you add in 20 then it will randomly select one of the 20 songs you have added.<br /><br />
+
+			When adding songs please make sure that the song names are all one word and have no special characters, this is so as to make sure that there won't be any 
+            filename issues when they are inserted into the music script.<br /><br />
+
+			Please Note: Adding more songs will dramatically increase your bandwidth usage, especially if you are using X10 Hosting or any other host with a monthly 
+            bandwidth limit. Please also remember that adding copyrighted audio is illegal. If you add copyrighted music you will be held liable.<br /><br />
+
+	3. [OPTIONAL] ADJUST VOLUME<br />
+    You can adjust the volume by looking for the following line of code.</p>
+    
+    <pre>	//Changes volume of song. 0.5=50% volume
+	$('.audio').prop("volume", 0.3);</pre>
+    
+    <p>By default it is set at 30% volume (0.3), to change the volume Simply change 0.3 to a value between 0 to 1.<br /><br />
+    
+    4. [OPTIONAL] TEST<br />
+    To test if the music will play whilst people are connecting to your server all you need to do is type in the URL into the in-game steam browser. If it works
+    in this browser then it will all be ok. If not then you have probably done something wrong.</p>
+
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>CHANGING BACKGROUND SPEED</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            Woah those images are fading pretty quickly aren't they?<br /><br />
+            
+            You can change them by finding and editing the code shown below which can be found in index.php</p>
+            
+            <pre>$('#background-scroll').cycle({ 
+		fx: 'fade',
+		pause: 0, 
+		speed: 1800, //Duration of Effect in milliseconds
+		timeout: 3500  //Time spent on image in milliseconds
+		});</pre>
+        
+        <p>Simply change the speed number to change the time it takes for the images to fade and change the timeout option to modify the amount of time
+        spent admiring a background image.</p>
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>CHANGING BACKGROUND TRANSITIONS</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            Bored of the old fading effect? Then change the transition<br /><br />
+            
+            You can change them by finding a new effect that you like <a href="http://jquery.malsup.com/cycle/browser.html" target="_blank">here</a> and then looking for this code below and changing the fx option to the one you want.</p>
+            
+            <pre>$('#background-scroll').cycle({ 
+		fx: 'EFFECT NAME GOES HERE',
+		pause: 0, 
+		speed: 1800, //Duration of Effect in milliseconds
+		timeout: 3500  //Time spent on image in milliseconds
+		});</pre>
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>ADDING EXTRA BACKGROUNDS</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            	Adding in extra backgrounds is now even easier than ever, just add in the images you want to be set as the background into the backgrounds folder
+                and you're done. It's that easy.
+            </p>
+        
+        
+	</div>
+    
+    
+    <div class="box-wrap">
+           	<h2>CHANGING COLOUR OF THE BAR</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            Changing the colour of the bar is super easy, all you have to do is open up the colours folder and pick a colour that you like, then copy and paste
+            the colour.css file into the folder of the loading screen you are working on.<br /><br />
+            
+            It should over-write the colour.css file residing in your core loading screen folder.</p>
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>CHANGING THE RULES</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            Changing the rules is fairly easy, by default there are 10 and this keeps everything perfectly in-line, however you can remove
+            or add extra rules if you want to.<br /><br />
+            
+            1. FINDING THE LIST<br />
+            The rules are all in a big list, below shows the code which makes up the rules list.</p>
+            
+            <pre>&lt;ul id="rules"&gt;
+	&lt;li&gt;&lt;span&gt;1&lt;/span&gt; Do not bully or harass other players&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;2&lt;/span&gt; Do not be annoying&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;3&lt;/span&gt; Do not propkill&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;4&lt;/span&gt; Do not RDM&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;5&lt;/span&gt; Do not metagame&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;6&lt;/span&gt; Do not hack or exploit&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;7&lt;/span&gt; Do not micspam&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;8&lt;/span&gt; Do not kill players who are AFK&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;9&lt;/span&gt; Obey all staff orders&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;10&lt;/span&gt; Thanks, and have fun!&lt;/li&gt;
+&lt;/ul&gt;;</pre>
+        
+        <p>2. CHANGING THE RULES<br />
+        To change the rules simply modify the text after the span tags, it's that easy :)<br /><br />
+        
+        Below is some example code showing the changed rules. (note that the text inside of the span tag will show up as the little number list)</p>
+        
+        <pre>&lt;ul id="rules"&gt;
+	&lt;li&gt;&lt;span&gt;1&lt;/span&gt; Rule Number 1&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;2&lt;/span&gt; Rule Number 2&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;3&lt;/span&gt; Rule Number 3&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;4&lt;/span&gt; Rule Number 4&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;5&lt;/span&gt; Rule Number 5&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;6&lt;/span&gt; Rule Number 6&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;7&lt;/span&gt; Rule Number 7&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;8&lt;/span&gt; Rule Number 8&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;9&lt;/span&gt; Rule Number 9&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;10&lt;/span&gt; Rule Number 10&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>CHANGING THE GAMEMODE NAME</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            The loading screen dynamically gets the name of the game mode you are running but it will be the name
+            of the game mode which you set in your config file, not the full name. To get the full game mode name
+            you will need to manually edit this yourself<br /><br />
+            
+            1. EDITING INDEX.PHP<br />
+            First thing we need to do is to find the bit of code which controls the game mode name in index.php, below is the code we are looking for.</p>
+            
+            <pre>&lt;li&gt;&lt;img src="images/server-mode.png" alt="Game Mode" /&gt; &lt;span id="s-mode"&gt;Game Mode&lt;/span&gt;&lt;/li&gt;</pre>
+        
+        <p>2. REMOVE THE SPAN ID<br />
+        The game mode name is insterted using javascript and it looks for the id of s-mode, all we need to do is remove the id tag from the span and
+        then change the text to our liking, below is an example piece of code where I have removed the span ID and changed the game mode name to show
+        up as being Trouble in Terrorist Town</p>
+        
+        <pre>&lt;li&gt;&lt;img src="images/server-mode.png" alt="Game Mode" /&gt; &lt;span&gt;Trouble in Terrorist Town&lt;/span&gt;&lt;/li&gt;</pre>
+        
+        	<p>3. EDITING MAIN.JS<br />
+            Now we need to edit a script called main.js, this is located inside the scripts folder, make sure you right click and then select the open
+            with option otherwise your computer will try to run the script file instead of let you edit it.<br /><br />
+            
+            Once open scroll down to the bottom of the file to find the following section of code.</p>
+            <pre>function GameDetails( servername, serverurl, mapname, maxplayers, steamid, gamemode ) {
+	document.getElementById( "s-name" ).innerHTML = servername;
+	document.getElementById( "s-map" ).innerHTML = mapname;
+	document.getElementById( "s-mode" ).innerHTML = gamemode;
+}</pre>
+        
+        	<p>You want to change this section of code to the one below.</p>
+            <pre>function GameDetails( servername, serverurl, mapname, maxplayers, steamid, gamemode ) {
+	document.getElementById( "s-name" ).innerHTML = servername;
+	document.getElementById( "s-map" ).innerHTML = mapname;
+}</pre>
+
+		<p>And we're done, that's it :)</p>
+      
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>CHANGING THE LOGO</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            The logo is simply an image named logo.png which sits in the images folder. To change the logo simply over-write the image in this
+            folder and it will update the image on the loading screen. Please note that the current dimensions for the logo are 960px x 120px</p>
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>MAKING THE LOGO BIGGER</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            To make the logo bigger you firstly need to over-write logo.png in the images folder with your new logo image. You must make sure
+            that the image is in the PNG format and is 960 pixels wide. Once this is done we then need to update index.php to resize the logo
+            correctly, so find the piece of code below</p>
+            
+            <pre>	&lt;img src="images/logo.png" width="960" height="120" alt="Your Logo" /&gt;</pre>
+            
+            <p>And simply change the height to the new height of your logo image, remembe the image must be 960 pixels wide. Below is an example
+            showing me changing the height to be 200 pixels.
+            
+            <pre>	&lt;img src="images/logo.png" width="960" height="200" alt="Your Logo" /&gt;</pre>
+            
+            
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>TWO LINES PER RULE</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            some times you need a little extra space in the rules list and to do this we can easily double the size
+            of the rule so that it will fit on two lines. All you have to do is look for the code below in index.php.</p>
+            
+            <pre>&lt;ul id="rules"&gt;
+	&lt;li&gt;&lt;span&gt;1&lt;/span&gt; Do not bully or harass other players&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;2&lt;/span&gt; Do not be annoying&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;3&lt;/span&gt; Do not propkill&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;4&lt;/span&gt; Do not RDM&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;5&lt;/span&gt; Do not metagame&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;6&lt;/span&gt; Do not hack or exploit&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;7&lt;/span&gt; Do not micspam&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;8&lt;/span&gt; Do not kill players who are AFK&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;9&lt;/span&gt; Obey all staff orders&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;10&lt;/span&gt; Thanks, and have fun!&lt;/li&gt;
+&lt;/ul&gt;</pre>
+            
+            <p>This piece of code defines all the rules, to make one of them span along two lines all you need to do is add the class "double" to the list item
+            in which you want to be bigger. Below is an example where I have added the class to the first rule which will make it fit on two lines rather than one.</p>
+            
+            <pre>&lt;ul id="rules"&gt;
+	&lt;li class="double"&gt;&lt;span&gt;1&lt;/span&gt; Do not bully or harass other players&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;2&lt;/span&gt; Do not be annoying&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;3&lt;/span&gt; Do not propkill&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;4&lt;/span&gt; Do not RDM&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;5&lt;/span&gt; Do not metagame&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;6&lt;/span&gt; Do not hack or exploit&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;7&lt;/span&gt; Do not micspam&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;8&lt;/span&gt; Do not kill players who are AFK&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;9&lt;/span&gt; Obey all staff orders&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;10&lt;/span&gt; Thanks, and have fun!&lt;/li&gt;
+&lt;/ul&gt;</pre>
+            
+            
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>MOVE DOWNLOAD ITEM AND PERCENTAGE TEXT</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            At the bottom of Crystal Load is the download bar and underneath that are two pieces of text which show the download percentage of all the
+            items overall and the current item that is being downloaded. By default these appear on the right hand side but it is possible to have
+            them appear on the left hand side.<br /><br />
+            
+            1. FIND THE PIECE OF CODE IN INDEX.PHP<br />
+            Find the following piece of code which is shown in the box below. (please note that there might be some comment tags, you can safely ignore those)</p>
+            
+            <pre>	&lt;div id="percentage"&gt;
+		&lt;p&gt;&lt;/p&gt;
+	&lt;/div&gt;
+        
+	&lt;div id="download-item"&gt;
+		&lt;p&gt;Connecting...&lt;/p&gt;
+	&lt;/div&gt;</pre>
+            
+            <p>2. REPLACE CODE<br />
+            Replace the code you have just found with the code below, we are basically just flipping them round so that when we move onto the next
+            step it will all display correctly</p>
+            
+            <pre>	&lt;div id="download-item"&gt;
+		&lt;p&gt;Connecting...&lt;/p&gt;
+	&lt;/div&gt;
+    
+   	&lt;div id="percentage"&gt;
+		&lt;p&gt;&lt;/p&gt;
+	&lt;/div&gt;</pre>
+    
+    		<p>3. REPLACE CODE IN STYLE.CSS<br />
+            You now want to find the following code inside style.css</p>
+            
+            <pre>#percentage p {float: right; font-family: 'Open Sans', Arial, Helvetica, sans-serif; 
+            color: RGBA(0,0,0,0.7); font-weight: 400; font-size: 16pt; margin: 4px 0 0 0;}
+#download-item p {float: right; font-family: 'Open Sans', Arial, Helvetica, sans-serif; 
+color: RGBA(0,0,0,0.7); font-weight: 400; font-size: 11pt; margin: 8px 10px 0 0;}</pre>
+
+			<p>and replace it with the code below which will make them float to the left instead of to the right.</p>
+            
+            <pre>#percentage p {float: left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; 
+            color: RGBA(0,0,0,0.7); font-weight: 400; font-size: 16pt; margin: 4px 0 0 0;}
+#download-item p {float: left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; 
+color: RGBA(0,0,0,0.7); font-weight: 400; font-size: 11pt; margin: 8px 10px 0 0;}</pre>     
+            
+	</div>
+    
+    <div class="box-wrap">
+           	<h2>DISPLAY A TEXT BOX INSTEAD OF RULES LIST</h2>
+            
+            <p class="text-box"><!-- PAGE TEXT -->
+            To keep the folder structure easier to manage you will have to manually add the code for the text box but don't worry it's easy to do and most of it
+            is all set up :D<br /><br />
+            
+            1. REPLACE THE RULES CODE IN INDEX.PHP<br />
+            Find the following piece of code which is shown in the box below. (please note that there might be some comment tags, you can safely ignore those)<br />
+            This code basically renders the rules list so we can throw it out</p>
+            
+            <pre>&lt;ul id="rules"&gt;
+	&lt;li&gt;&lt;span&gt;1&lt;/span&gt; Do not bully or harass other players&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;2&lt;/span&gt; Do not be annoying&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;3&lt;/span&gt; Do not propkill&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;4&lt;/span&gt; Do not RDM&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;5&lt;/span&gt; Do not metagame&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;6&lt;/span&gt; Do not hack or exploit&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;7&lt;/span&gt; Do not micspam&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;8&lt;/span&gt; Do not kill players who are AFK&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;9&lt;/span&gt; Obey all staff orders&lt;/li&gt;
+	&lt;li&gt;&lt;span&gt;10&lt;/span&gt; Thanks, and have fun!&lt;/li&gt;
+&lt;/ul&gt;</pre>
+
+			<p>So all you need to do is replace the code above with the code below</p>
+            
+            <pre>	&lt;div id="box"&gt;
+		&lt;p&gt;Your text for you new fancy text box goes here&lt;/p&gt;
+	&lt;/div&gt;</pre>
+            
+            <p>2. FIX TITLE<br />
+            So it's still going to say OUR RULES above our next fancy text box so all we need to do is find the code below</p>
+            
+            <pre>	&lt;div class="title"&gt;
+		&lt;h2&gt;Our Rules&lt;/h2&gt;
+	&lt;/div&gt;</pre>
+            
+            <p>and change the text inside the h2 tags to be our title, below is an example where I have changed it to say About Us<br />
+            (please note that the text will automatically be put into capitals no matter how you typed it in)</p>
+            
+            <pre>	&lt;div class="title"&gt;
+		&lt;h2&gt;About Us&lt;/h2&gt;
+	&lt;/div&gt;</pre> 
+            
+	</div>
+            
+ 	</div><!-- This closes the wrapper -->
+    
+
+
+	</body><!-- Closes off the HTML Document -->
+</html>

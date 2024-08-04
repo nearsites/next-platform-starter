@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+/* Created By CaptainMcMarcus */
+/* For the garrys mod community */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
+
+html {
+	height: 100%; -webkit-font-smoothing: antialiased; font-smoothing: antialiased;
+}
+
+/* Clearing some default browser settings */
+* {border: 0px; margin: 0px; padding: 0px;}
+a:active {outline:none;}
+:focus {-moz-outline-style:none;}
+.clear {clear:both;}
+
+/* These parts can be easily changed to affect the design */
+body {color: #FFF; font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	background: url('images/bg.jpg') no-repeat; background-size: 100% auto; background-size: cover; background-attachment: fixed;}
+
+p {text-align: justify; font-size:16px;}
+p a { text-decoration: underline; color: #0C39E4; text-decoration: underline;}
+p a:hover { text-decoration: none; color: #333;}
+
+/* Core Wrapper which we vertically align */
+.wrapper {width: 660px; height: auto; margin: 0 auto;}
+
+.box-wrap {width: 100%; height: auto; margin: 20px 0 0 0;
+-webkit-box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.2);
+box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.2);}
+
+.box-wrap h2 {width: 100%; height: auto; padding: 15px 0; text-align: center; 
+background: url('images/header-bg.png') repeat center top; background-color: RGBA(42,52,59,0.75);}
+
+.box-wrap p {font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-weight: 300; font-size: 18px; padding: 15px 30px; overflow: hidden; 
+text-align: justify; width: 600px; height: auto; background: #ffffff; color: #717171;}
+
+.icon-box {width: 210px; height: 210px; background: #FFF; margin: 20px 15px 20px 0; float: left; text-decoration: none;}
+.icon-box a {text-decoration: none;}
+.icon-box p {font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-weight: 300; font-size: 22px; text-align: center; color: #717171; text-decoration: none;}
+
+.icon-box:hover {background: #f1f1f1;}
+
+.wide {width: 435px; margin: 0px 15px 0 0;}
+.end2 {margin: 0px 0px 0px 0px;}
+
+.end {margin: 20px 0px 0px 0px;}
+
+nav {margin: 20px 0; width: 660px;}
+nav ul {width: 660px; height: auto; list-style: none;}
+nav ul li a {background: #FFFFFF; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-weight: 300; font-size: 22px; text-align: center; color: #717171;
+text-decoration: none; float: left; padding: 8px 0; width: 210px; margin: 0 10px 0 0;}
+
+nav ul li a:hover {background: #f1f1f1;}
+
+code, pre {
+  padding: 0 3px 2px;
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 10px;
+  color: #333333;
+}
+code {
+  padding: 3px 4px;
+  color: #d14;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+pre {
+  display: block;
+  padding: 8.5px;
+  margin: 0px;
+  font-size: 11px;
+  line-height: 18px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+pre code {
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+}
